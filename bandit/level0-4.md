@@ -1,6 +1,8 @@
+# 🔹 Bandit Notes | Levels 0–4
 
-# Bandit Notes 
-## Level 0 → 1
+---
+
+## 🔹 Level 0 → 1
 
 **Challenge:** Log into the server via SSH.
 
@@ -17,9 +19,9 @@ SSH (Secure Shell) allows encrypted remote login.
 
 Real-World Scenario:
 
-Misconfigured SSH or default credentials are a common attack vector.
-
+> Misconfigured SSH or default credentials are a common attack vector.
 Example: In 2021, attackers used weak SSH passwords to compromise servers and mine crypto (CSO Online).
+
 
 
 Teaching Points:
@@ -33,14 +35,17 @@ Key-based authentication is more secure than passwords.
 
 Defense / Mitigation:
 
-Disable password login, use key-based authentication.
+Disable password login; use key-based authentication.
 
 Change default SSH port.
 
 Limit access to specific IPs and enable 2FA.
 
 
-Level 1 → 2
+
+---
+
+🔹 Level 1 → 2
 
 Challenge: Read a file named -.
 
@@ -50,16 +55,16 @@ cat ./-
 
 Step-by-Step Explanation:
 
-The file is named -, which is normally interpreted as standard input.
+The file is named -, normally interpreted as standard input.
 
-Using ./- forces the shell to interpret it as a filename.
+Using ./- forces the shell to treat it as a filename.
 
 
 Real-World Scenario:
 
-Attackers exploit special filenames in uploads to bypass validation.
-
+> Attackers exploit special filenames in uploads to bypass validation.
 Example: CVE-2017-5638 (Apache Struts) used improper handling of input filenames/headers to achieve remote code execution (CVE MITRE).
+
 
 
 Teaching Points:
@@ -76,7 +81,10 @@ Sanitize filenames in web applications.
 Block dangerous characters (; | & $ * ?) and validate input.
 
 
-Level 2 → 3
+
+---
+
+🔹 Level 2 → 3
 
 Challenge: File has spaces in the filename.
 
@@ -88,14 +96,14 @@ cat spaces\ in\ this\ filename
 
 Step-by-Step Explanation:
 
-The shell interprets spaces as separators; quotes or escaping preserve the literal filename.
+Shell interprets spaces as separators; quotes or escaping preserve the literal filename.
 
 
 Real-World Scenario:
 
-Hackers hide malicious files using spaces or unusual characters (shell .php, config .env) to bypass filters.
-
+> Hackers hide malicious files using spaces or unusual characters (shell .php, config .env) to bypass filters.
 Example: Malware often uses spaces, unicode, or invisible characters to avoid detection (SANS Whitepaper).
+
 
 
 Teaching Points:
@@ -113,7 +121,11 @@ Reject unexpected characters in uploads.
 
 Whitelist allowed file extensions.
 
-Level 3 → 4
+
+
+---
+
+🔹 Level 3 → 4
 
 Challenge: Find the password in a hidden file.
 
@@ -131,9 +143,9 @@ Hidden files often contain credentials, keys, or configuration data.
 
 Real-World Scenario:
 
-Exposed .git, .env, or .ssh/ files often lead to serious breaches.
-
+> Exposed .git, .env, or .ssh/ files often lead to serious breaches.
 Example: Uber’s 2016 breach involved a publicly exposed GitHub repository containing AWS keys (Reuters).
+
 
 
 Teaching Points:
@@ -150,5 +162,6 @@ Block hidden files from public access.
 Store secrets in secure vaults (AWS Secrets Manager, HashiCorp Vault).
 
 Properly configure .gitignore and server permissions.
+
 
 
